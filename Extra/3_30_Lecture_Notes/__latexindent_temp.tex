@@ -78,7 +78,7 @@ What are the residues of $x^2 \equiv a \pmod{7}$? We find that $x^2 \equiv a \pm
 
 \section{Concept of Partnering}
 
-Say we wanted to find the sum of all the numbers up to 99, how would we go about this? Recall Gau{\ss}' idea of summing consecutive numbers. We would do this by partnering 1 and 99 to get 100, 2 and 98 to also get 100 and we would continue this process until we reached the middle which would give us 49 pairs that sum to 100. Also, there would be the lonely numbers 50 and 100. Add up all the partners along with the lonely numbers, we find that the sum is 5050. It’s an efficient way to sum all the numbers, but it also has a multiplicative version which is the following theorem.
+\hspace{1em} Say we wanted to find the sum of all the numbers up to 99, how would we go about this? Recall Gau{\ss}' idea of summing consecutive numbers. We would do this by partnering 1 and 99 to get 100, 2 and 98 to also get 100 and we would continue this process until we reached the middle which would give us 49 pairs that sum to 100. Also, there would be the lonely numbers 50 and 100. Add up all the partners along with the lonely numbers, we find that the sum is 5050. It’s an efficient way to sum all the numbers, but it also has a multiplicative version which is the following theorem.
 
 \begin{theorem}{8.2 (Wilson's Theorem)}
 \textit{If $p$ is a prime number, then $(p-1)! \equiv -1 \pmod{p}$.}
@@ -113,6 +113,14 @@ Note, that every number in $\Phi(p)$ has an $a$-partner. So, if $x \in \Phi(p)$,
 
 \section{Euler's Criterion for Squares (mod \textit{\textbf{p}})}
 
+\hspace{1em} The theorem uses the fact that the residue classes, which are a partition, modulo prime $p$ create a field. A field is a ring, which is an algebraic structure that allows for two binary operations, that also allows for "division", or in better terms, a multiplicative inverse for every nonzero element of the field. Also, since the modulus is prime, then Lagrange's theorem applies.
+
+\begin{theorem}{8.35 (Lagrange's theorem)}
+  \textit{Any polynomial of degree $k$ has at most $k$ roots.}
+\end{theorem}
+
+As it applies to quadratic residue, Lagrange's theorem says that $x^2 \equiv a \pmod{p}$ has at most two solutions for $a$.
+
 \begin{theorem}{8.5 (Euler's Criterion for Squares (mod \textit{\textbf{p}}))} \textit{Let $p$
 be an odd prime number, and let $a$ be an integer coprime to $p$. Then,
 \begin{itemize}
@@ -121,16 +129,44 @@ be an odd prime number, and let $a$ be an integer coprime to $p$. Then,
 \end{itemize}}
 \end{theorem}
 
-\section{Applications of Euler's Criterion}
+Euler's criterion can also be expressed as a Legendre symbol which is defined as $$\left( \frac{a}{p} \right) = a^{\frac{p-1}{2}} \pmod{p}.$$
+
+\begin{example}{2}
+  Find residues given$\pmod{17}$.
+
+Using the formula, we get the table
+
+\begin{table}[!htbp]
+  \centering
+  \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
+  \hline
+  $x$ & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8\\ \hline
+  $x^{(17-1)/2} \pmod{17}$ & 0 & 1 & 1 & -1 & 1 & -1 & -1 & -1 & 1 \\ \hline
+  \end{tabular}
+  \end{table}
+Note, we dont need to try the values 9 through 16 since they are equivalent to the negative of 1 through 8, i.e, $16 \equiv -1 \pmod{17}$. So, we get that the quadratic residues modulo 17 are $\{1,2,4,8,9,13,15,16\}$.
+\end{example}
+
+\section{Applications of Reciprocity -1}
+
+\hspace{1em} We will first introduce Minkowski's theorem as the proof to Fermat's Christmas theorem, in the way that we currently know how to solve, involves the use of Minkowski's result.
+
+"Minkowski's theorem in the plane is my favorite result from the lecture as it is not immediately intuitive that it would be true. Also, I felt that nearly every property of circles have been known for millenia, yet there is still more being discovered." -Trey Manuszak
+
+\begin{proposition}{8.8 (Minkowski's theorem in the plane)} \textit{Consider a grid of parallelograms in the plane, with the origin at a grid point, and a circle centered at the origin. If the area of the circle is greater than 4 times the area of the parallelogram, then the circle contains a grid-point besides the origin.}
+\end{proposition}
 
 \begin{theorem}{8.7 (Fermat's Christmas Theorem)}
   \textit{Let $p$ be a prime number with $p \equiv 1 \pmod{4}$. Then the Diophantine equation $x^2 + y^2 = p$ has a solution. In other words, $p$ can be expressed as the sum of two squares.}
 \end{theorem}
 
-\begin{proposition}{8.8 (Minkowski's theorem in the plane)} \textit{Consider a grid of parallelograms in the plane, with the origin at a grid point, and a circle centered at the origin. If the area of the circle is greater than 4 times the area of the parallelogram, then the circle contains a grid-point besides the origin.}
-  
-\end{proposition}
+\begin{sol}
+  Let $p$ be a prime number with $p$ of the form $p \equiv 1 \pmod{4}$. Let $u \in \mathbb{Z}$ that satisfies $u^2 \equiv 1 \pmod{p}$. Consider the set $A = \{(x,y) : x \equiv uy \pmod{p}\}$. Note, this is the set of corners of a grid of parallelograms. Also, $(0,0),(u,1),(p,0),(p+u,1) \in A$. Note, each parallelogram has area $p$. Let $B$ be a circle center at the origin with area $4p$. Then by Minkowski's theorem, we know that the circle contains some point $(x,y)$ and $(x,y) \neq (0,0)$. By construction, $(x,y)$ satisfies $$x^2 + y^2 \leq \frac{4}{\pi}p \hspace{1em} \text{and} \hspace{1em} x \equiv uy \pmod{p}.$$
 
+  \hspace{1em} Since $u^2 \equiv -1 \pmod{p}$, then $x^2 \equiv -y^2 \pmod{p}$, which implies $x^2 + y^2 \leq \frac{4}{\pi}p$ and $x^2 + y^2$ is a multiple of $p$. Note, $x^2 + y^2 > 0$ since $(x,y) \neq (0,0)$. So, since $1 < \frac{4}{\pi} < 2$, then $0 < x^2 + y^2 < 2p$ and $x^2 + y^2$ is a multiple of $p$. Since the only multiple of $p$ strictly between $0$ and $2p$ is $p$, then we have $$x^2 + y^2 = p.$$
+\end{sol}
+
+As a historical note on Fermat's Christmas theorem, it's name was coined as the idea of the theorem was first expressed in a letter to Merin Mersenne dated December 25, 1640.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Do not alter anything below this line.
