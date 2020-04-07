@@ -14,6 +14,10 @@
 \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
 \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
 \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{example}[2][Example]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{definition}[2][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}  
 \newenvironment{sol}
     {\emph{Proof.}
     }
@@ -58,7 +62,54 @@
 %Copy the following block of text for each problem in the assignment.
 \section{Introduction and Review}
 
-\section{Wilson's Theorem and Consequences}
+\hspace{1em} We have previously learned how to solve linear congruences such as $5x \equiv 7 \pmod{13}$, which is the same as $5x = 7 + 13y$. We are now moving on to Quadratic Congruences such as $5x^2 \equiv 7 \pmod{13}$, which is the same as $5x^2 = 7+13y$. The problem now is that the Euclidean algorithm will no longer help us with quadratic equations. To understand problems of the form $x^2 \equiv a \pmod{p}$, we must explore the squares$\pmod{p}$ (aka quadratic residues$\pmod{p}$). 
+
+\begin{example}{1 (Quadratic Residues (mod \textit{\textbf{p}}))}
+What are the residues of $x^2 \equiv a \pmod{7}$? We find that $x^2 \equiv a \pmod{7}$ only has solutions when $a = 0,1,2,4$. These were found by taking the square of all the numbers up to 7 with repsect to modulo 7, i.e, 
+\begin{table}[!htbp]
+  \centering
+  \begin{tabular}{|l|l|l|l|l|l|l|l|}
+  \hline
+  $x$ & 0 & 1 & 2 & 3 & 4 & 5 & 6 \\ \hline
+  $x^2 \pmod{7}$ & 0 & 1 & 4 & 2 & 2 & 4 & 1 \\ \hline
+  \end{tabular}
+  \end{table}
+\end{example}
+
+\section{Concept of Partnering}
+
+Say we wanted to find the sum of all the numbers up to 99, how would we go about this? Recall Gau{\ss}' idea of summing consecutive numbers. We would do this by partnering 1 and 99 to get 100, 2 and 98 to also get 100 and we would continue this process until we reached the middle which would give us 49 pairs that sum to 100. Also, there would be the lonely numbers 50 and 100. Add up all the partners along with the lonely numbers, we find that the sum is 5050. It’s an efficient way to sum all the numbers, but it also has a multiplicative version which is the following theorem.
+
+\begin{theorem}{8.2 (Wilson's Theorem)}
+\textit{If $p$ is a prime number, then $(p-1)! \equiv -1 \pmod{p}$.}
+\end{theorem}
+\begin{sol}
+  Partner numbers $\phi(p) = \{1,2,3,\dots,p-1\}$ by pairing $x$ with $y$ when $xy \equiv 1 \pmod{p}$. 
+  Note that all partners are unique. The lonely numbers in this case would be the numbers for which $x^2 = x \times x \equiv 1 \pmod{p}$. 
+  By proposition 6.21, these lonely numbers are 1 and $p - 1$. To multiply the numbers in $\Phi(p)$ we multiply partners, which results in 1 as the product. 
+  The lonely numbers are the only thing that contribute to the product. Thus, $$1 \times 2 \times 3 \times ... \times (p-1) = 1 \times (p-1) \equiv -1 \pmod{p}.$$
+\end{sol}
+
+"Wilson's theorem is my favorite concept from the lecture since it used the partnering concept we learned about early in the semester and applies to something more complex." -Christian Garcia
+
+\vspace{1em}
+
+Wilson's theorem lets us analyze squares.
+
+\begin{proposition}{8.3} \textit{Let $p$ be an odd prime number. Then among the set $\Phi(p)$ half the numbers are squares and half are not.}
+\end{proposition}
+\begin{sol}
+Consider the squaring$\pmod{p}$ function on the set $\Phi(p)$. We find that the squaring$\pmod{p}$ function gives a two to one correspondence Indeed, if $x$ and $p - x$ are input into this function, then the outputs are $x^2 \pmod{p}$ and $(p - x)^2 \pmod{p}$ But, $$(p - x)^2 \equiv (-x)^2 = x^2.$$ So, both inputs give the same result. No more than two inputs yield the same output Because if $x^2 \equiv y^2 \pmod{p}$, then $(x + y)( x - y) \equiv 0 \pmod{p}$, so $x \equiv \pm y \pmod{p}$, which implies $y = p - x$ within the set $\Phi(p)$. Since there are two inputs for every output, there is half as many squares as inputs. Therefore, half of the elements of $\Phi(p)$ are squares. 
+\end{sol}
+
+However, this proposition does not identify which half are squares. The following definition resolves the question.
+
+\begin{definition}{8.4}
+  Let $p$ be a prime number. Let $a,x,$ and $y$ be elements of $\Phi(p)$. We declare $x$ and $y$ to be $a$\textbf{-partners} if $xy \equiv a \pmod{p}$.
+\end{definition}
+
+Note, that every number in $\Phi(p)$ has an $a$-partner. So, if $x \in \Phi(p)$, then there exists a multiplicative inverse $y \in \Phi(p)$ such that $ya$ is the $a$-partner of $x \pmod{p}$. So, $x(ya) = (xy)a = 1 \times a \equiv a \pmod{p}$. When $a$-partnering, the lonely numbers are the $x$ for which $x^2 \equiv a \pmod{p}$.
+
 
 \section{Euler's Criterion for Squares (mod \textit{\textbf{p}})}
 
