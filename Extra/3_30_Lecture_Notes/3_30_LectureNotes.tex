@@ -1,0 +1,86 @@
+%DO NOT ALTER THIS BLOCK OF COMMANDS.
+\documentclass[12pt]{article}
+\usepackage[margin=1in, bottom=4.5cm]{geometry}
+\usepackage{amsmath,amsthm,amssymb,amsfonts, enumitem, fancyhdr, color, comment, graphicx, environ, scrextend, tikz, mathtools}
+\pagestyle{fancy}
+\setlength{\headheight}{65pt}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{sol}
+    {\emph{Proof.}
+    }
+    {
+    \qed
+    }
+\specialcomment{com}{ \color{blue} \textbf{Comment:} }{\color{black}} %for instructor comments while grading
+\NewEnviron{probscore}{\marginpar{ \color{blue} \tiny Problem Score: \BODY \color{black} }}
+
+
+\newcommand\restr[2]{{% we make the whole thing an ordinary symbol
+  \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
+  #1 % the function
+  \vphantom{\big|} % pretend it's a little taller at normal size
+  \right|_{#2} % this is the delimiter
+  }}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Fill in the appropriate header information below
+\lhead{Trey Manuszak \\ Christian Garcia}  %replace with your name
+\rhead{MAT 445: Number Theory \\ 3/30 Lecture Notes}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%% PUT YOUR TITLE PAGE INFO HERE
+\usepackage{blindtext}
+\title{MAT 445: Number Theory}
+\date{April 7, 2020}
+\author{Trey Manuszak\\ Arizona State University}
+%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Do not alter this block.
+\begin{document}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%THIS IS WHERE YOU WILL BE DOING ALL OF YOUR WORK
+%Copy the following block of text for each problem in the assignment.
+\section{Introduction and Review}
+
+\section{Wilson's Theorem and Consequences}
+
+\section{Euler's Criterion for Squares (mod \textit{\textbf{p}})}
+
+\begin{theorem}{8.5 (Euler's Criterion for Squares (mod \textit{\textbf{p}}))} \textit{Let $p$
+be an odd prime number, and let $a$ be an integer coprime to $p$. Then,
+\begin{itemize}
+  \item $a$ is square$\pmod{p}$, if and only if $a^{(p-1)/2} \equiv 1 \pmod{p}$.
+  \item $a$ is nonsquare$\pmod{p}$, if and only if $a^{(p-1)/2} \equiv -1 \pmod{p}$.
+\end{itemize}}
+\end{theorem}
+
+\section{Applications of Euler's Criterion}
+
+\begin{theorem}{8.7 (Fermat's Christmas Theorem)}
+  \textit{Let $p$ be a prime number with $p \equiv 1 \pmod{4}$. Then the Diophantine equation $x^2 + y^2 = p$ has a solution. In other words, $p$ can be expressed as the sum of two squares.}
+\end{theorem}
+
+\begin{proposition}{8.8 (Minkowski's theorem in the plane)} \textit{Consider a grid of parallelograms in the plane, with the origin at a grid point, and a circle centered at the origin. If the area of the circle is greater than 4 times the area of the parallelogram, then the circle contains a grid-point besides the origin.}
+  
+\end{proposition}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Do not alter anything below this line.
+\end{document}
